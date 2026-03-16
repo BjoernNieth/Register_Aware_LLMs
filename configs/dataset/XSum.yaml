@@ -1,0 +1,5 @@
+name: XSum
+hf_name: EdinburghNLP/xsum
+task_name: "summary"
+context_data_columns: ["document"]
+percentile_cutoff: 95

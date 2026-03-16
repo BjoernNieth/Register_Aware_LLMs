@@ -1,0 +1,4 @@
+name: BNC2014Spoken
+text_name: "Conversation_Clean"
+context_data_columns: ["Conversation_Context", "Speaker_Metadata"]
+percentile_cutoff: 97

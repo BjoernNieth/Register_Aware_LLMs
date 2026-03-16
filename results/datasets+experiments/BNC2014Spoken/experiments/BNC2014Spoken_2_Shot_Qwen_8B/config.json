@@ -1,0 +1,48 @@
+{
+    "dataset": "Biber_Study_Dataset",
+    "experiment_name": "BNC2014Spoken_2_Shot_Qwen_8B",
+    "model": {
+        "name": "Qwen/Qwen3-8B",
+        "model_args": {
+            "gpu_memory_utilization": 0.96,
+            "max_num_seqs": 75,
+            "tensor_parallel_size": 2,
+            "max_model_len": 5100
+        }
+    },
+    "prompts": {
+        "prompt_type": "Chat",
+        "system_prompt": {
+            "role": "system",
+            "content": "You are tasked with writing a conversation between 2 or more people given context about the speakers and the conversation. Write a conversation of at least 400 words. You do not need to finish the conversation or cover all topics mentioned. You can start with an already ongoing conversation. Please indicate each speaker with 'Speaker_1:', 'Speaker_2:', etc."
+        },
+        "iterative_prompts": [
+            {
+                "user_prompt": {
+                    "role": "user",
+                    "content": "Please write a conversation given the following context: {Speaker_Metadata}\n {Conversation_Context} /no_think"
+                },
+                "assistant_prompt_start": {
+                    "role": "assistant",
+                    "content": "Certainly, here is my answer: "
+                },
+                "assistant_prompt_few_shot": {
+                    "role": "assistant",
+                    "content": "Certainly, here is my answer: {Conversation}"
+                },
+                "parse_output": true,
+                "output_name": "generated_text",
+                "prompt_args": {
+                    "min_tokens": 900,
+                    "max_tokens": 1000,
+                    "temperature": 1.0,
+                    "top_p": 1,
+                    "ignore_eos": true,
+                    "stop": null
+                }
+            }
+        ]
+    },
+    "n-shot": 2,
+    "seed": 271
+}

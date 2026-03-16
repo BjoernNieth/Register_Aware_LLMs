@@ -1,0 +1,48 @@
+{
+    "dataset": "Biber_Study_Dataset",
+    "experiment_name": "S2ORC_ACL_3_Shot_Gemma_12B",
+    "model": {
+        "name": "google/gemma-3-12b-it",
+        "model_args": {
+            "gpu_memory_utilization": 0.96,
+            "max_num_seqs": 36,
+            "tensor_parallel_size": 2,
+            "max_model_len": 4200
+        }
+    },
+    "prompts": {
+        "prompt_type": "Chat",
+        "system_prompt": {
+            "role": "system",
+            "content": "You are an author of ACL papers. Your task is to write the introduction of a paper given its title and abstract. Write an introduction of at least 400 words. Output only the introduction text."
+        },
+        "iterative_prompts": [
+            {
+                "user_prompt": {
+                    "role": "user",
+                    "content": "Please write a paper given the following title and abstract: {title}\n{abstract} /no_think"
+                },
+                "assistant_prompt_start": {
+                    "role": "assistant",
+                    "content": "Certainly, here is my answer: "
+                },
+                "assistant_prompt_few_shot": {
+                    "role": "assistant",
+                    "content": "Certainly, here is my answer: {introduction}"
+                },
+                "parse_output": true,
+                "output_name": "generated_text",
+                "prompt_args": {
+                    "min_tokens": 600,
+                    "max_tokens": 700,
+                    "temperature": 1.0,
+                    "top_p": 1,
+                    "ignore_eos": true,
+                    "stop": null
+                }
+            }
+        ]
+    },
+    "n-shot": 3,
+    "seed": 271
+}

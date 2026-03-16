@@ -1,0 +1,48 @@
+{
+    "dataset": "Biber_Study_Dataset",
+    "experiment_name": "XSum_3_Shot_Apertus_70B",
+    "model": {
+        "name": "swiss-ai/Apertus-70B-Instruct-2509",
+        "model_args": {
+            "gpu_memory_utilization": 0.96,
+            "max_num_seqs": 5,
+            "tensor_parallel_size": 2,
+            "max_model_len": 5400
+        }
+    },
+    "prompts": {
+        "prompt_type": "Chat",
+        "system_prompt": {
+            "role": "system",
+            "content": "You are a writer for a British newspaper. Your task is to write the beginning of an article based on a short summary of the content. If necessary, you can add names and other facts to the story. Write a beginning of at least 400 words. You do not need to finish the article. Please output only the article text."
+        },
+        "iterative_prompts": [
+            {
+                "user_prompt": {
+                    "role": "user",
+                    "content": "Please write an article given the following summary: {summary}"
+                },
+                "assistant_prompt_start": {
+                    "role": "assistant",
+                    "content": "Certainly, here is my answer: "
+                },
+                "assistant_prompt_few_shot": {
+                    "role": "assistant",
+                    "content": "Certainly, here is my answer: {document}"
+                },
+                "parse_output": true,
+                "output_name": "generated_text",
+                "prompt_args": {
+                    "min_tokens": 700,
+                    "max_tokens": 750,
+                    "temperature": 1.0,
+                    "top_p": 1,
+                    "ignore_eos": true,
+                    "stop": null
+                }
+            }
+        ]
+    },
+    "n-shot": 3,
+    "seed": 271
+}

@@ -1,0 +1,4 @@
+name: wikiHow
+text_name: "text"
+context_data_columns: ["title", "headline"]
+percentile_cutoff: 95

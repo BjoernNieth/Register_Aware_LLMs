@@ -1,0 +1,29 @@
+{
+    "dataset": "BNC2014Spoken",
+    "setting": "Zero_Shot",
+    "ablation_type": "prompt_ablation",
+    "new_system_prompts": [
+        "Your task is to write a multi-speaker conversation based on the provided context information about the speakers and situation. The conversation should be at least 400 words long. It may begin in the middle of an interaction. Label turns as 'Speaker_1:', 'Speaker_2:', and so on.",
+        "Your goal is to write a multi-speaker conversation. Use the speaker information and context provided by the user. You can jump right into an ongoing exchange. Make sure it's at least 400 words and mark each turn with 'Speaker_1:', 'Speaker_2:', etc.",
+        "Please create a detailed conversation of at least 400 words that faithfully reflects the provided speaker characteristics and situational context. The conversation may begin mid-discussion. Use 'Speaker_1:' and similar labels.",
+        "The user will provide background about several speakers and a situation. Please craft a natural conversation between them (≥400 words), starting at any point in the interaction. Label each turn 'Speaker_1:', 'Speaker_2:', etc."
+    ],
+    "new_user_prompts": [
+        "Generate a conversation using the following information: {Speaker_Metadata}\n{Conversation_Context}",
+        "Here's the background info. Please write the conversation: {Speaker_Metadata}\n{Conversation_Context}",
+        "Use the following metadata to write the conversation: {Speaker_Metadata}\n {Conversation_Context}",
+        "Background information: {Speaker_Metadata}\n{Conversation_Context}\nPlease write the conversation."
+    ],
+    "new_assistant_prompt_start": [
+        "Sure, here is my answer: ",
+        "Certainly, here is my answer: ",
+        "Sure, here is my answer: ",
+        "Certainly, here is my answer: "
+    ],
+    "new_assistant_prompt_few_shot": [
+        "Sure, here is my answer: {Conversation}",
+        "Certainly, here is my answer: {Conversation}",
+        "Sure, here is my answer: ",
+        "Certainly, here is my answer: "
+    ]
+}

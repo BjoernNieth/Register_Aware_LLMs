@@ -1,0 +1,8 @@
+sample_size: 600
+method: MMD_unbiased
+num_runs: 10
+random_draws: 1000
+sample_size_lower: 100
+sample_size_upper: 1000
+sample_size_step_size: 50
+sample_size_repetitions: 1000

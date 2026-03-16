@@ -1,0 +1,49 @@
+[
+  {
+    "dataset": "Biber_Study_Dataset",
+    "experiment_name": "WritingPrompts_Zero_Shot_Qwen_8B_Thinking",
+    "model": {
+      "name": "Qwen/Qwen3-8B",
+      "model_args": {
+        "gpu_memory_utilization": 0.96,
+        "max_num_seqs": 150,
+        "tensor_parallel_size" : 2,
+        "max_model_len": 2700
+      }
+    },
+    "prompts": {
+        "prompt_type": "Chat",
+        "system_prompt": {
+            "role": "system",
+            "content": "You are a participant on an online creative writing forum where users write short stories inspired by prompts from other members. Your task is to write the opening section of a story based on the given prompt. Write the beginning of a story of at least 400 words. You do not need to finish the story. Please output only your story text. Think about your response before answering."
+        },
+        "iterative_prompts": [
+            {
+                "user_prompt": {
+                    "role": "user",
+                    "content": "Please write a story for the following prompt: {prompt} /think"
+                },
+                "assistant_prompt_start": {
+                    "role": "assistant",
+                    "content": "Certainly, here is my answer: "
+                },
+                "assistant_prompt_few_shot": {
+                    "role": "assistant", "content": "Certainly, here is my answer: {story}"
+                },
+                "parse_output": true,
+                "output_name": "generated_text",
+                "prompt_args": {
+                    "min_tokens": 650,
+                    "max_tokens": 750,
+                    "temperature": 1.0,
+                    "top_p": 1,
+                    "ignore_eos": true,
+                    "stop": null
+                }
+            }
+        ]
+    },
+    "n-shot": 0,
+    "seed": 271
+}
+]

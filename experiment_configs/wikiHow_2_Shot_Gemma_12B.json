@@ -1,0 +1,49 @@
+[
+  {
+    "dataset": "Biber_Study_Dataset",
+    "experiment_name": "wikiHow_2_Shot_Gemma_12B",
+    "model": {
+      "name": "google/gemma-3-12b-it",
+      "model_args": {
+        "gpu_memory_utilization": 0.96,
+        "max_num_seqs": 75,
+        "tensor_parallel_size" : 2,
+        "max_model_len": 3150
+      }
+    },
+    "prompts": {
+        "prompt_type": "Chat",
+        "system_prompt": {
+            "role": "system",
+            "content": "You are the author of a wikiHow article. Your task is to write the full article given the title and headline. Write an article of at least 400 words. Please only output the article text."
+        },
+        "iterative_prompts": [
+            {
+                "user_prompt": {
+                    "role": "user",
+                    "content": "Please write an article given the following title and headline: {title}\n{headline}"
+                }, 
+                "assistant_prompt_start": {
+                    "role": "assistant",
+                    "content": "Certainly, here is my answer: {title}"
+                },
+                "assistant_prompt_few_shot": {
+                    "role": "assistant", "content": "Certainly, here is my answer: {text}"
+                },
+                "parse_output": true,
+                "output_name": "generated_text",
+                "prompt_args": {
+                    "min_tokens": 700,
+                    "max_tokens": 750,
+                    "temperature": 1.0,
+                    "top_p": 1,
+                    "ignore_eos": true,
+                    "stop": null
+                }
+            }
+        ]
+    },
+    "n-shot": 2,
+    "seed": 271
+}
+]

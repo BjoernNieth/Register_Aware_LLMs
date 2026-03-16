@@ -1,0 +1,7 @@
+name: WritingPrompts
+hf_name: euclaise/writingprompts
+min_word_count_prompt: 3
+max_punctuation_ratio: 0.2
+task_name: "prompt"
+context_data_columns: ["story"]
+percentile_cutoff: 95

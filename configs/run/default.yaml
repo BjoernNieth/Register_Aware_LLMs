@@ -1,0 +1,4 @@
+seed: 127
+min_len_tokens: 400
+token_cap: 440
+hf_token: Insert_Your_Token_Here

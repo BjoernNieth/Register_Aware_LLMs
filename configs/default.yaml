@@ -1,0 +1,7 @@
+defaults:
+  - dataset: WritingPrompts
+  - run: default
+  - subsample: default
+  - biber_tag: default 
+  - stat_eval: default
+datapath: ./results/datasets+experiments
