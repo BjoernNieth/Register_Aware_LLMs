@@ -1,0 +1,6 @@
+name: S2ORC_ACL
+text_name: introduction
+api_key: Insert_Your_API_Key_Here
+release_id: 2022-05-10
+context_data_columns: ["abstract", "title"]
+percentile_cutoff: 95

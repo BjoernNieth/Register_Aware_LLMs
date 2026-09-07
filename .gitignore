@@ -1,0 +1,12 @@
+.DS_Store
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# credentials
+.env
+
+# raw corpora - must be obtained separately, see README
+bnc2014spoken-xml.zip
+wikihowAll.csv.zip
+*.zip

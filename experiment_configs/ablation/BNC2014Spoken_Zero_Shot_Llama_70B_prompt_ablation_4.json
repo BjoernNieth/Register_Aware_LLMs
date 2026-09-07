@@ -1,0 +1,50 @@
+[
+  {
+    "dataset": "Biber_Study_Dataset",
+    "experiment_name": "BNC2014Spoken_Zero_Shot_Llama_70B_prompt_ablation_4",
+    "model": {
+      "name": "meta-llama/Llama-3.3-70B-Instruct",
+      "model_args": {
+        "gpu_memory_utilization": 0.96,
+        "max_num_seqs": 32,
+        "tensor_parallel_size": 2,
+        "max_model_len": 1600
+      }
+    },
+    "prompts": {
+      "prompt_type": "Chat",
+      "system_prompt": {
+        "role": "system",
+        "content": "The user will provide background about several speakers and a situation. Please craft a natural conversation between them (\u2265400 words), starting at any point in the interaction. Label each turn 'Speaker_1:', 'Speaker_2:', etc."
+      },
+      "iterative_prompts": [
+        {
+          "user_prompt": {
+            "role": "user",
+            "content": "Background information: {Speaker_Metadata}\n{Conversation_Context}\nPlease write the conversation."
+          },
+          "assistant_prompt_start": {
+            "role": "assistant",
+            "content": "Certainly, here is my answer: "
+          },
+          "assistant_prompt_few_shot": {
+            "role": "assistant",
+            "content": "Certainly, here is my answer: "
+          },
+          "parse_output": true,
+          "output_name": "generated_text",
+          "prompt_args": {
+            "min_tokens": 800,
+            "max_tokens": 900,
+            "temperature": 1.0,
+            "top_p": 1,
+            "ignore_eos": true,
+            "stop": null
+          }
+        }
+      ]
+    },
+    "n-shot": 0,
+    "seed": 271
+  }
+]
